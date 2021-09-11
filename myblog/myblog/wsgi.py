@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myblog.settings')
+profile = os.environ.get('TYPEIDEA_PROFILE', 'develop')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myblog.settings.%s" % profile)
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myblog.settings')
 
 application = get_wsgi_application()
